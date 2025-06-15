@@ -1,0 +1,478 @@
+/* Global Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(to right,#654ea3, #eaafc8);
+  color: white;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Top Half */
+.top-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.main-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.sub-role {
+  font-size: 1.2rem;
+  color: #dddddd;
+  animation: fadeIn 3s ease-in-out;
+}
+
+/* Bottom Half */
+.bottom-section {
+  flex: 1;
+  background-color: #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color:#7b4364;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  position: relative;
+}
+  
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: #7b4364;
+  margin: 8px auto;
+}
+
+.about-text {
+  max-width: 1200px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cfd8dc;
+}
+
+/* Optional animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
+}
+/* Scroll Button */
+.scroll-link {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color:#654ea3, #eaafc8;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.scroll-link:hover {
+  background-color:#654ea3;
+}
+
+/* Experience Box */
+/* Base style for experience box */
+.experience-box {
+  line-height: 1.8; 
+  max-width: 500px;
+  background-color:#2c2f33;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 25px;
+  margin-top: 40px;
+  cursor: pointer;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+
+  * Make job title bold */
+.experience-box h3 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+.experience-box p {
+  margin: 6px 0;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Strong text in box */
+.experience-box p strong {
+  color: #ffffff;
+}
+
+  /* Hidden initially */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
+}
+
+/* Visible on scroll */
+.experience-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* On click */
+.experience-box:hover {
+  background-color: #654ea3;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Fade-in effect from AOS */
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.6s;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* AOS starts with slightly lowered element */
+[data-aos="fade-up"] {
+  transform: translateY(20px);
+}
+
+/* On click: background turns blue */
+.experience-box.active {
+  background-color: #654ea3;
+}
+/* Hidden by default */
+.experience-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Show when scrolled into view */
+.experience-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Intern box */
+/* Base style for intern box */
+.intern-box {
+  line-height: 1.8;
+  margin-bottom: 60px; 
+  width: 600px;
+  height: 250px;
+  max-width: 800px;
+  background-color:#2c2f33;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 40px 25px;
+  margin-top: 40px;
+  min-height: 180px;  /* ensures height is less than width for rectangle */
+  margin: 60px auto;
+  cursor: pointer;
+  margin: 40px auto 20px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  text-align: start;
+  transition: background-color 0.3s ease;
+  border-radius: 10px; /* default rounded */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
+}
+.intern-section {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.intern-box h3 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.intern-box p {
+  margin: 6px 0;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Strong text in box */
+.intern-box p strong {
+  color: #ffffff;
+}
+
+/* Visible on scroll */
+.intern-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* On click */
+.intern-box:hover {
+  background-color: #654ea3;
+  transition: background-color 0.3s ease;
+}
+.project-section {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front {
+  background-color: #2c2f33;
+  color: white;
+}
+
+.flip-card-front img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.flip-card-back {
+  background-color: #654ea3;
+  color: white;
+  transform: rotateY(180deg);
+}
+.skills-section {
+  background-color: #1a1a1a;  /* Dark background */
+  padding: 60px 20px;         /* Space inside the section */
+  margin: 0 auto;             /* Center the content */
+  text-align: center;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+}
+.skill {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease;
+}
+
+.skill.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.bar {
+  background-color: #333;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 12px;
+}
+
+.fill {
+  height: 100%;
+  background-color: #8e44ad;
+  border-radius: 20px 0 0 20px;
+  width: 0%;
+  transition: width 1s ease;
+}
+
+.skill.visible .fill {
+  width: var(--width);
+}
+
+.skills-section h2 {
+  color: #b180d7;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #b180d7;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-size: 32px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 80px;
+  justify-content: center;
+}
+
+.skill label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: white;
+  text-align: left;
+}
+
+.contact-box {
+  background-color: #2c2f33;
+  padding: 15px 20px;
+  border-radius: 10px;
+  max-width: 350px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contact-box p {
+  background-color: #1c1e22;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.contact-box a {
+  color: #2e8bff;
+  text-decoration: none;
+}
+.Contact-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+.footer-section {
+  background-color: #2c2f33; /* ash-like dark gray */
+  width:100%;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  position: relative;
+}
+
+.footer {
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2f33;
+  color: #cccccc;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  border-top: 1px solid #444;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer strong {
+  color: #a471ff;
+}
+
+.footer p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
